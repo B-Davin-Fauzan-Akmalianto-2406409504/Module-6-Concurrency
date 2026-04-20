@@ -1,0 +1,2 @@
+## Commit 1 Reflection Notes
+Fungsi handle_connection membaca data dari koneksi, dan kemudian merubahnya menjadi bentuk tulisan yang bisa dibaca oleh manusia. Pertama dia menampung sinyal dulu di buffer (yang disimpan variable buf_reader), kemudian dari buf_reader itu dipecah per newline dan dicollect ke satu vector http_request, yang kemudian di print.
