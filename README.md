@@ -12,3 +12,7 @@ Refactoring dilakukan karna sebelumnya itu dari dua kondisi ada yang ngulang kod
 
 ## Commit 4 Reflection Notes
 Karena servernya berjalan di single thread, maka ketika page /sleep mendelay diri sendiri selama 10 detik, page lain harus nunggu /sleep kelar pakai threadnya dulu, baru bisa jalan.
+
+## Commit 5 Reflection Notes
+Kita membuat sebuah struct bernama ThreadPool di lib.rs, fungsinya adalah untuk membuat multi threads namun bisa dibatasi oleh sebuah angka (size). Disini, dibuatlah suatu channel yang terdiri dari sender (yang dipegang threadpoolnya) dan receiver yang dipegang masing2 worker (thread). Receiver dibungkus Arc agar bisa punya multiple clones dari receiver yang sama (agar bisa dipegang bbrp worker sekaligus), dan juga Mutex agar instruksi hanya bisa dikerjain satu worker dalam satu waktu. Kemudian, fungsi execute di ThreadPool akan mengirim "job" untuk dikerjakan salah satu worker. 
+Dalam worker, jangan lupa di loop agar worker (thread) tidak sekali jalan lalu mati.
