@@ -9,3 +9,6 @@ Pada fungsi handle_connection di commit 2, kita membuat suatu string response ya
 ![Commit 3 screen capture](/assets/images/commit3.png)
 Pada commit 3, kita membuat if expression yang dimana kalau misal http_requestnya ga diawali dengan GET / HTTP/1.1 (artinya kalau linknya bukan "/"), dia bakalan nge set nama file html yang di pakai menjadi yang 404.html, sehingga bisa menampilkan page yang menunjukkan 404 not found jika tidak memakai link /.
 Refactoring dilakukan karna sebelumnya itu dari dua kondisi ada yang ngulang kode yang sama, jadi biar DRY.
+
+## Commit 4 Reflection Notes
+Karena servernya berjalan di single thread, maka ketika page /sleep mendelay diri sendiri selama 10 detik, page lain harus nunggu /sleep kelar pakai threadnya dulu, baru bisa jalan.
